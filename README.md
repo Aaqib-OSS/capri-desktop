@@ -17,7 +17,7 @@ She sits on your windows, talks back, joins your calls, plays your games and get
 
 [Every download](https://capriai.app/#download) · [Setup guide](https://capriai.app/setup/) · [Website](https://capriai.app/) · [Help](https://capriai.app/help/) · [Support](#support)
 
-<sub>Only download Capri from [github.com/lachydotmcg/capri-desktop releases](https://github.com/lachydotmcg/capri-desktop/releases) or [capriai.app](https://capriai.app/), and check it against the release's `SHA256SUMS.txt` ([how](SECURITY.md#windows-or-your-antivirus-warned-me)). Copies on other sites or GitHub accounts aren't ours. Zero telemetry.</sub>
+<sub>Only download Capri from [github.com/lachydotmcg/capri-desktop releases](https://github.com/lachydotmcg/capri-desktop/releases) or [capriai.app](https://capriai.app/), and check it against the release's `SHA256SUMS.txt` ([how](SECURITY.md#windows-or-your-antivirus-warned-me)). Copies on other sites or GitHub accounts aren't ours. No telemetry unless you opt in.</sub>
 
 <sub>Inspired by jpartnma_'s TikTok video.</sub>
 
@@ -220,7 +220,7 @@ Press **Y** in the headset for her settings. Her brain and voice keys stay on yo
 
 Only download Capri from [github.com/lachydotmcg/capri-desktop releases](https://github.com/lachydotmcg/capri-desktop/releases) or [capriai.app](https://capriai.app/). Every release has a `SHA256SUMS.txt` with the SHA-256 of each file, Windows, Mac and Linux, and [SECURITY.md](SECURITY.md#windows-or-your-antivirus-warned-me) shows how to check yours. Copies on other sites or GitHub accounts aren't ours.
 
-**Zero telemetry.** No analytics, crash reports or usage pings. [SECURITY.md](SECURITY.md) lists what she connects to, what the website counts, and what to do if Windows or your antivirus warns you.
+**No telemetry unless you opt in.** No analytics or usage pings, and crash reports stay off until you turn them on. Two exceptions: Capri Remote on a phone sends one anonymous count a day, and the Quest build carries a Meta telemetry ID from Meta's SDK. [SECURITY.md](SECURITY.md) lists what she connects to, what the website counts, and what to do if Windows or your antivirus warns you.
 
 Stuck? The [setup guide](https://capriai.app/setup/) walks through it, or ask in the [Discord](https://discord.gg/capridesktop). [Windows or your antivirus may warn you](SECURITY.md#windows-or-your-antivirus-warned-me) because she's a new app. All the code is here.
 

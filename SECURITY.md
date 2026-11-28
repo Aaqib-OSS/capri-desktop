@@ -1,8 +1,15 @@
 # Security and privacy
 
-## Zero telemetry
+## No telemetry unless you opt in
 
-The app has no analytics, no crash reports and no usage pings. We never receive your chat logs, transcriptions, screenshots, files, keys or notes, except encrypted Remote traffic we can't read.
+The app has no analytics and no usage pings. Crash reports are off until you pick Help > Send crash reports (Windows only). Then, after a crash, she sends her version, your Windows version and her own crash lines to `capri-reactions.lachydotmcg.workers.dev/crash`, with saved keys, your user folder, your user name and your PC's name taken out first.
+
+Two exceptions:
+
+- **Capri Remote on a phone** sends one anonymous count a day, with no key, chat or id. See **Phone only with a key** below.
+- **The Quest build** carries a Meta telemetry ID from Meta's SDK.
+
+We never receive your chat logs, transcriptions, screenshots, files, keys or notes, except encrypted Remote traffic we can't read.
 
 Your settings, chats, transcripts, notes and error logs are stored on your PC, in `%LOCALAPPDATA%\Capri` on Windows. Keys you save are encrypted for your Windows account. On Mac and Linux they sit unencrypted in local files that only your account can read. If you pick an Obsidian vault for her notes, they live in that vault instead, and go wherever your vault syncs.
 
@@ -56,7 +63,7 @@ Your PC and phone's browser connect out to a Cloudflare Worker, with one Durable
 - **Keys sent to the PC.** They travel end-to-end encrypted and are saved with DPAPI, just like a key typed in her Mainframe. They are never sent back to the phone.
 - **Screen view.** Frames go only while a phone watches, end-to-end encrypted. A badge stays on the PC while a phone watches or calls.
 - **Phone only with a key.** Your own key is saved in localStorage in that browser on capriai.app. It goes straight to your chosen provider with your chat: Anthropic (`api.anthropic.com`), OpenAI (`api.openai.com`), Google AI (`generativelanguage.googleapis.com`), OpenRouter (`openrouter.ai`) or DeepSeek (`api.deepseek.com`). Saved chat stays in that browser. Those requests use no relay and pass through nothing of ours. Once a UTC day, after her first reply that worked with either phone brain, the page also sends `capri-reactions.lachydotmcg.workers.dev/phone-day` two yes/no flags (this browser's first count, and whether it's also paired with a PC). That request carries no key, chat or id, and the worker adds it to the day's totals without storing anything about the sender.
-- **Free phone brain.** The page sends the newest chat turns to `capri-reactions.lachydotmcg.workers.dev/free`, which passes at most 12 turns and 6,000 characters to Workers AI (Gemma) with the worker's own prompt. A client system turn, model, limits and every other field are dropped, and chat-template markers are stripped. The worker stores and logs no chat. It counts 15 messages a UTC day per salted daily hash of the connection address (an IPv6 address by its /64), and before each call it holds that call's upper-bound cost against a shared 8,000-Neuron daily ceiling, so the route itself never spends more than that in a day. Counts older than yesterday are deleted on the next free message. Many addresses can still use up the day's pool; that closes the free brain until midnight UTC and costs nothing more.
+- **Free phone brain.** The page sends the newest chat turns to `capri-reactions.lachydotmcg.workers.dev/free`, which passes at most 12 turns and 6,000 characters to Workers AI (Gemma) with the worker's own prompt. A client system turn, model, limits and every other field are dropped, and chat-template markers are stripped. The worker stores and logs no chat. It counts 15 messages a UTC day per salted daily hash of the connection address (an IPv6 address by its /64), and before each call it holds that call's upper-bound cost against a shared 10,000-Neuron daily ceiling, so the route itself never spends more than that in a day. Counts older than yesterday are deleted on the next free message. Many addresses can still use up the day's pool; that closes the free brain until midnight UTC and costs nothing more.
 - **Shared site storage.** Capri Remote shares browser storage with the rest of capriai.app. A script on any capriai.app page could read a phone-only key, saved chats and the phone's relay sign-in, but not its encryption key. Those pages run only the site's own scripts, plus YouTube's player script on the home page after you press Play on her song. Remote's own page allows only its own scripts.
 
 ## Your brain and voice providers
